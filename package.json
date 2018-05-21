@@ -1,0 +1,21 @@
+{
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chromedriver": "^2.34.0",
+    "cucumber": "1.2.2",
+    "gherkin-parser": "^1.0.1",
+    "selenium": "^2.20.0",
+    "selenium-standalone": "^6.14.0",
+    "wdio": "^2.0.2",
+    "wdio-cucumber-framework": "0.2.5",
+    "wdio-selenium-standalone-service": "0.0.10",
+    "wdio-spec-reporter": "^0.1.4",
+    "webdriverio": "^4.12.0"
+  },
+  "scripts": {
+    "alltests": "./node_modules/.bin/wdio",
+    "bidtests": "./node_modules/.bin/wdio --spec ./features/Bid.feature",
+    "authtests": "./node_modules/.bin/wdio --spec ./features/Authentication.feature",
+    "asktests": "./node_modules/.bin/wdio --spec ./features/Ask.feature"
+  }
+}
