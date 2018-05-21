@@ -35,10 +35,10 @@ To install all dev dependencies:
 ## Running the tests
 
 To run the tests, open terminal, navigate to this project then execute any of the following commands:
-'npm run authtests' -- This will run all Authentication tests in the Authentication feature file (FYI: Do not run test repeatedly in a short time frame.  User's account will get locked out and tests will fail.)
-'npm run bidtests' -- This will run all Bidding tests in the Bidding feature file
-'npm run asktests' -- This will run all Ask tests in the Ask feature file
-'npm run alltests' -- This will run all tests in all feature files
+* 'npm run authtests' -- This will run all Authentication tests in the Authentication feature file (FYI: Do not run test repeatedly in a short time frame.  User's account will get locked out and tests will fail.)
+* 'npm run bidtests' -- This will run all Bidding tests in the Bidding feature file
+* 'npm run asktests' -- This will run all Ask tests in the Ask feature file
+* 'npm run alltests' -- This will run all tests in all feature files
 
 ### What do these tests validate?
 
