@@ -29,6 +29,7 @@ You will need to install all dev dependencies in the package.json file.
 ### Installing
 
 To install all dev dependencies:
+
 1. In your terminal, navigate to this project (project folder should be named 'stockxtest')
 2. Execute 'npm install'
 
