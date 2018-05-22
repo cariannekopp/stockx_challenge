@@ -1,12 +1,13 @@
 {
   "devDependencies": {
     "chai": "^4.1.2",
-    "chromedriver": "^2.34.0",
+    "chromedriver": "^2.38.3",
     "cucumber": "1.2.2",
     "gherkin-parser": "^1.0.1",
+    "geckodriver": "1.10.0",
     "selenium": "^2.20.0",
-    "selenium-standalone": "^6.14.0",
-    "wdio": "^2.0.2",
+    "selenium-standalone": "^6.14.1",
+    "wdio": "2.0.1",
     "wdio-cucumber-framework": "0.2.5",
     "wdio-selenium-standalone-service": "0.0.10",
     "wdio-spec-reporter": "^0.1.4",

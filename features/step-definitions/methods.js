@@ -3,7 +3,7 @@ var selectors = require('./selectors.js').selectors
 exports.methods = {
     iAmOnHomepage: function(){
         browser.url('/');
-        browser.waitForExist(selectors.homePage);
+        expect(browser.waitForExist(selectors.homePage),'Error: Home page did not load within 60 seconds').to.be.true;
     },
     iSelectLoginSignUp: function(){
         browser.waitForExist(selectors.logInSignUpButton);
@@ -27,23 +27,25 @@ exports.methods = {
     },
     iClickLogInButton: function(){
         browser.click(selectors.logInButton);
-        if(browser.isExisting('.buttons-set>ladda-button>.ladda-spinner')){
-            browser.waitUntil(browser.isExisting('.buttons-set>.ladda-button>.ladda-spinner') == false);
+        if(browser.isExisting(selectors.logInSpinner)){
+            browser.waitUntil(browser.isExisting(selectors.logInSpinner) == false);
         }
     },
     iAmLoggedIn: function(){
         //browser.waitForExist(selectors.logInButton,[10000],[false]);
         browser.moveToObject(selectors.authenticateButton);
         expect(browser.isVisible(selectors.myAccountDropDown));
-        expect(browser.getText(selectors.authenticateButton)).to.equal("My Account");
+        expect(browser.getText(selectors.authenticateButton)).to.equal('My Account');
     },
     iLogOut: function(){
         browser.moveToObject(selectors.authenticateButton);
         browser.waitForVisible(selectors.myAccountDropDown);
         browser.click(selectors.myAccountDropDown);
-        expect(browser.getText(selectors.authenticateButton)).to.equal("Login / Sign Up");
+        expect(browser.getText(selectors.authenticateButton)).to.equal('Login / Sign Up');
     },
     iGetLinksOfMostPopularItems: function(){
+        //TO DO: Find a method of validating all elements within the object have loaded.  This issue is causing intermittent failures and until fixed requires a pause.
+        browser.pause(1000);
         browser.waitForExist(selectors.popularItemTiles);
         browser.waitForEnabled(selectors.popularItemTiles);
         browser.waitForVisible(selectors.popularItemTiles);
@@ -59,7 +61,7 @@ exports.methods = {
     iSelectFirstPopularItem: function(){
         var firstPopularItemLink = this.iGetFirstPopularItem();
         browser.click('a[href="' + firstPopularItemLink + '"]');
-        expect(browser.getUrl()).to.equal("https://stockx.com" + firstPopularItemLink);
+        expect(browser.getUrl()).to.equal('https://stockx.com' + firstPopularItemLink);
     },
     iClickBuyBidButton: function(){
         browser.waitForExist(selectors.bidBuyButton);
@@ -127,15 +129,15 @@ exports.methods = {
     },
     iSeeWarningForLowBid: function(){
         var warningText = this.iGetWarningText();
-        expect(warningText).to.have.string("not the highest bidder");
+        expect(warningText).to.have.string('not the highest bidder');
     },
     iSeeWarningForEqualBid: function(){
         var warningText = this.iGetWarningText();
-        expect(warningText).to.have.string("about to match the highest Bid. Their Bid will be accepted first");
+        expect(warningText).to.have.string('about to match the highest Bid. Their Bid will be accepted first');
     },
     iSeeWarningForBidBelowMinimum: function(){
         var warningText = this.iGetWarningText();
-        expect(warningText).to.have.string("You must meet the minimum Bid of $25");
+        expect(warningText).to.have.string('You must meet the minimum Bid of $25');
     },
     iClickContinueToBid: function(){
         browser.click(selectors.continueToBidButton);
@@ -150,8 +152,9 @@ exports.methods = {
         if(browser.isExisting(selectors.productSummary) === false){
             browser.waitForText(selectors.askModalTitle);
             browser.waitForText(selectors.modalBody);
+            browser.waitForExist(selectors.iUnderstandAskingButton);
             var modalTitleText = browser.getText(selectors.askModalTitle);
-                if(modalTitleText == "how it works"){
+                if(modalTitleText == 'how it works'){
                     browser.click(selectors.iUnderstandAskingButton);
                 }
             }
@@ -161,8 +164,9 @@ exports.methods = {
         if(browser.isExisting(selectors.productSummary) === false){
             browser.waitForText(selectors.askModalTitle);
             browser.waitForText(selectors.modalBody);
+            browser.waitForExist(selectors.doppelgangerButton);
             var modalTitleText = browser.getText(selectors.askModalTitle);
-                if(modalTitleText == "Doppelganger"){
+                if(modalTitleText == 'Doppelganger'){
                     browser.click(selectors.doppelgangerButton);
                 }
             }
@@ -171,11 +175,11 @@ exports.methods = {
         this.iWaitForModalSpinner();
         browser.waitForText(selectors.modalBody);
         var modalTitleText = browser.getText(selectors.askModalTitle);
-        if(modalTitleText == "how it works"){
+        if(modalTitleText == 'how it works'){
             this.iSelectiUnderstandAsking();
-        } else if(modalTitleText == "Doppelganger"){
+        } else if(modalTitleText == 'Doppelganger'){
             this.iSelectProductIfDopplegangerExists();
-        } else if(modalTitleText == "ask"){
+        } else if(modalTitleText == 'ask'){
             if(browser.waitForExist(selectors.productSummary,[5000]) == false){
                 this.iSelectiUnderstandAsking();
                 this.iSelectProductIfDopplegangerExists();
@@ -188,13 +192,13 @@ exports.methods = {
             this.iOpenSizeDropdown();
             browser.click('//*[@id="ask-create-form"]/fieldset/div/div[2]/div[1]/div[1]/div/div/ul/li[1]/a');
             expect(browser.isExisting(selectors.disabledBidAskAmountTextField)).to.be.false;
-            expect(browser.isExisting('.amount-div')).to.be.true;
+            expect(browser.isExisting(selectors.bidAskAmountBox)).to.be.true;
         }
     },
     iSelectSellNowTab: function(){
         browser.waitForExist(selectors.sellNowTab);
         browser.click(selectors.sellNowTab);
-        var valueOfHighestBid = "$" + this.iGetValueOfHighestBid();
+        var valueOfHighestBid = '$' + this.iGetValueOfHighestBid();
         expect(browser.getText(selectors.disabledBidAskAmountTextField)).to.equal(valueOfHighestBid);
     },
     iGetValueOfLowestAsk: function(){
@@ -203,8 +207,7 @@ exports.methods = {
         var highestBidLowestAsk = browser.getText(selectors.highestBidLowestAsktext);
         var lowestAsk = highestBidLowestAsk[2];
         var lowestAskString = lowestAsk.replace('LOWEST ASK: $','');
-        var lowestAskNumber = parseInt(lowestAskString);
-        return lowestAskNumber;
+        return parseInt(lowestAskString);
     },
     iEnterAskLowerThanCurrentAsk: function(){
         var lowestAskValue = this.iGetValueOfLowestAsk();
@@ -225,10 +228,10 @@ exports.methods = {
     },
     iSeeWarningForHigherAsk: function(){
         var warningText = this.iGetWarningText();
-        expect(warningText).to.have.string("not the lowest Ask");
+        expect(warningText).to.have.string('not the lowest Ask');
     },
     iSeeWarningForEqualAsk: function(){
         var warningText = this.iGetWarningText();
-        expect(warningText).to.have.string("about to match the lowest Ask. Their Ask will be accepted before yours");
+        expect(warningText).to.have.string('about to match the lowest Ask. Their Ask will be accepted before yours');
     }
 }

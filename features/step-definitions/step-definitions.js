@@ -1,4 +1,3 @@
-//Object.create(require('./methods').methods)
 module.exports = function(){
     this.Before(function (scenario) {
         this.methods = Object.create(require('./methods.js').methods)
@@ -6,15 +5,11 @@ module.exports = function(){
     this.After(function (scenario) {
         this.methods = null;
     });
-    this.Given(/^I am testing with username "(.*)" and password "(.*)"$/, function(username, password, callback){
-        this.methods.iTest(username,password)
-        callback();
-    });
     this.Given(/^I am on the homepage$/, function(callback){
         this.methods.iAmOnHomepage();
         callback();
     });
-    this.Given(/^I log in with username "(.*)" and password "(.*)"$/, function(username, password,callback){
+    this.Given(/^I log in with username "(.*)" and password "(.*)"$/, function(username, password, callback){
         this.methods.iSelectLoginSignUp();
         this.methods.iSeeLoginSignUpModal();
         this.methods.iSelectLoginTab();
