@@ -25,6 +25,8 @@ To download Firefox browser, go here: https://www.mozilla.org/en-US/firefox/new/
 You will need to install Node.js and NPM.
 To install both, go here and choose 8.11.2 LTS (recommended for most users): https://nodejs.org/en/
 
+You will need Java Development Kit: http://www.oracle.com/technetwork/java/javase/downloads/index.html
+
 You will need to install all dev dependencies in the package.json file.
 
 ### Installing
