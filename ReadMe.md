@@ -1,8 +1,9 @@
 # StockX Automation Test
 
 Description of Assigned Automation Challenge:
+
 StockX (https://stockx.com) is a website where users can post asks (try to sell) and make bids (try
-to buy) on shoes, streetwear, handbags and watches. Is is ‚ÄúThe Stock Market of Things‚Äù.
+to buy) on shoes, streetwear, handbags and watches. Is is ìThe Stock Market of Thingsî.
 
 Your goal is to choose 2-3 activities on the site (authentication, bid, ask, purchase ...) and create a
 test plan describing the functionality and how you would test. Please write automated tests in
@@ -29,16 +30,17 @@ You will need to install all dev dependencies in the package.json file.
 ### Installing
 
 To install all dev dependencies:
+
 1. In your terminal, navigate to this project (project folder should be named 'stockxtest')
 2. Execute 'npm install'
 
 ## Running the tests
 
 To run the tests, open terminal, navigate to this project then execute any of the following commands:
-'npm run authtests' -- This will run all Authentication tests in the Authentication feature file (FYI: Do not run test repeatedly in a short time frame.  User's account will get locked out and tests will fail.)
-'npm run bidtests' -- This will run all Bidding tests in the Bidding feature file
-'npm run asktests' -- This will run all Ask tests in the Ask feature file
-'npm run alltests' -- This will run all tests in all feature files
+* 'npm run authtests' -- This will run all Authentication tests in the Authentication feature file (FYI: Do not run test repeatedly in a short time frame.  User's account will get locked out and tests will fail.)
+* 'npm run bidtests' -- This will run all Bidding tests in the Bidding feature file
+* 'npm run asktests' -- This will run all Ask tests in the Ask feature file
+* 'npm run alltests' -- This will run all tests in all feature files
 
 ### What do these tests validate?
 
