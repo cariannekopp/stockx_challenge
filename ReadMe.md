@@ -3,7 +3,7 @@
 Description of Assigned Automation Challenge:
 
 StockX (https://stockx.com) is a website where users can post asks (try to sell) and make bids (try
-to buy) on shoes, streetwear, handbags and watches. Is is ìThe Stock Market of Thingsî.
+to buy) on shoes, streetwear, handbags and watches. Is is ‚ÄúThe Stock Market of Things‚Äù.
 
 Your goal is to choose 2-3 activities on the site (authentication, bid, ask, purchase ...) and create a
 test plan describing the functionality and how you would test. Please write automated tests in
@@ -13,9 +13,6 @@ write as many tests as you feel comfortable with.
 Please include your test plan, testing framework and any dependencies needed as we will recreate and run them for validation.
 
 ## Getting Started
-
-This automation code does not exist on Github.
-If you are reading this, you should already have received the repository and be able to run it locally on your machine.
 
 ### Prerequisites
 
